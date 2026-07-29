@@ -34,7 +34,6 @@ typography:
     caption:  8
   weights:
     title: "bold"
-    body:  "regular"
 
 geometry:
   margin:
