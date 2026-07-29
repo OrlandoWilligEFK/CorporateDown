@@ -1,0 +1,34 @@
+Package: CorporateDown
+Title: Apply a Corporate Design to All 'ggplot2' Figures
+Version: 0.0.0.9000
+Authors@R:
+    person("Orlando", "Willig", email = "orlando.willig@efk.admin.ch",
+           role = c("aut", "cre"))
+Description: Define a corporate design once (colours, typography, sizes and
+    logo) as a declarative YAML file and have all subsequent 'ggplot2'
+    figures follow it automatically. A single call to
+    'set_corporate_design()' registers a matching theme, default colour and
+    fill scales, geom defaults and fonts, so ordinary 'ggplot2' code renders
+    in the corporate design without repeating theme or scale calls. Ships
+    with the design of the Swiss Federal Audit Office (EFK) as a reference.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports:
+    cli,
+    ggplot2 (>= 3.4.0),
+    grDevices,
+    grid,
+    ragg,
+    systemfonts,
+    utils,
+    yaml
+Suggests:
+    knitr,
+    magick,
+    patchwork,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

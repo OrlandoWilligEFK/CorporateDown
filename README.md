@@ -4,8 +4,8 @@
 > automatisch darin.
 
 <!-- badges: start -->
-<!-- ![R-CMD-check](https://img.shields.io/badge/R--CMD--check-passing-brightgreen)
-     [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange)]() -->
+[![R-CMD-check](https://github.com/OrlandoWilligEFK/CorporateDown/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OrlandoWilligEFK/CorporateDown/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 `CorporateDown` ist ein R-Package, mit dem sich ein **Corporate Design** (Farben,

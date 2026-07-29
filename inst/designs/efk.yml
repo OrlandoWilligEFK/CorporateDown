@@ -1,0 +1,55 @@
+# Corporate Design of the Swiss Federal Audit Office (EFK) / CD Bund.
+# Reference and test design for the CorporateDown package.
+meta:
+  name: "EFK"
+  version: "1.0.0"
+
+colors:
+  # Categorical palette; the first colour is the federal red and is used as
+  # the default colour / fill for geoms.
+  qualitative: ["#DC0018", "#4D4D4D", "#7A9CC6", "#E8A33D", "#5C8A5C", "#8C6BB1"]
+  # Endpoints for continuous (sequential) scales.
+  sequential:  ["#FDE5E7", "#DC0018"]
+  # Low / mid / high for diverging scales.
+  diverging:
+    low:  "#4D6FA9"
+    mid:  "#F2F2F2"
+    high: "#DC0018"
+  semantic:
+    background: "#FFFFFF"
+    text:       "#1A1A1A"
+    grid:       "#E6E6E6"
+    axis:       "#4D4D4D"
+    muted:      "#8C8C8C"
+    highlight:  "#DC0018"
+
+typography:
+  family:          "Frutiger"
+  family_fallback: "Liberation Sans"
+  sizes:
+    title:    16
+    subtitle: 12
+    axis:     10
+    legend:   10
+    caption:  8
+  weights:
+    title: "bold"
+    body:  "regular"
+
+geometry:
+  margin:
+    t: 10
+    r: 15
+    b: 10
+    l: 10
+  grid:
+    major_x: false
+    major_y: true
+    minor:   false
+  legend_position: "top"
+  line_width:      0.5
+
+logo:
+  path:     "efk.png"
+  position: "bottom-right"
+  width:    0.12
