@@ -105,7 +105,7 @@ typography:
   family:          "Frutiger"
   family_fallback: "Liberation Sans"
   sizes:   { title: 16, subtitle: 12, axis: 10, legend: 10, caption: 8 }
-  weights: { title: "bold", body: "regular" }
+  weights: { title: "bold" }
 
 geometry:
   margin:          { t: 10, r: 15, b: 10, l: 10 }

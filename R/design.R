@@ -20,7 +20,7 @@ default_tokens <- function() {
     typography = list(
       family = "", family_fallback = "Liberation Sans",
       sizes = list(title = 16, subtitle = 12, axis = 10, legend = 10, caption = 8),
-      weights = list(title = "bold", body = "regular")
+      weights = list(title = "bold")
     ),
     geometry = list(
       margin = list(t = 10, r = 15, b = 10, l = 10),
