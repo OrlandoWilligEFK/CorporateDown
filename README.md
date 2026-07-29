@@ -114,7 +114,7 @@ geometry:
   line_width:      0.5
 
 logo:
-  path:     "logos/efk.png"
+  path:     "efk.png"
   position: "bottom-right"
   width:    0.12
 ```
@@ -146,12 +146,12 @@ set_corporate_design(design)
 ## Roadmap
 
 **v1**
-- [ ] `corporate_design()` inkl. YAML-Validierung
-- [ ] `theme_corporate()` und Farbskalen
-- [ ] `set_corporate_design()` / `reset_corporate_design()` (globales Auto-Apply)
-- [ ] Schrift-Handling mit Fallback (`systemfonts` + `ragg`)
-- [ ] `finalise_plot()` / `add_logo()` (Logo + Export)
-- [ ] Mitgeliefertes EFK-Design (`inst/designs/efk.yml`)
+- [x] `corporate_design()` inkl. YAML-Validierung
+- [x] `theme_corporate()` und Farbskalen
+- [x] `set_corporate_design()` / `reset_corporate_design()` (globales Auto-Apply)
+- [x] Schrift-Handling mit Fallback (`systemfonts` + `ragg`)
+- [x] `finalise_plot()` / `add_logo()` (Logo + Export)
+- [x] Mitgeliefertes EFK-Design (`inst/designs/efk.yml`)
 
 **Später**
 - Weitere Bundes-/Ämter-Designs, pkgdown-Website, `vdiffr`-Grafiktests.
@@ -162,4 +162,4 @@ Konventionen und Zielarchitektur sind in [`CLAUDE.md`](CLAUDE.md) beschrieben.
 
 ## Lizenz
 
-MIT © 2026 OrlandoWilligEFK – siehe [`LICENSE`](LICENSE).
+MIT © 2026 Orlando Willig – siehe [`LICENSE`](LICENSE).
