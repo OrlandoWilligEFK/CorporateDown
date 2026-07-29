@@ -20,7 +20,7 @@ resolve_logo <- function(logo, design) {
   if (length(hit)) return(hit[[1]])
 
   cli::cli_inform(c(
-    "i" = "Logo {.path {path}} nicht gefunden – Abbildung wird ohne Logo erstellt."
+    "i" = "Logo {.path {path}} nicht gefunden \u2013 Abbildung wird ohne Logo erstellt."
   ))
   NULL
 }
@@ -67,8 +67,8 @@ add_logo <- function(plot, logo = NULL, position = NULL, width = NULL,
   if (!requireNamespace("patchwork", quietly = TRUE) ||
       !requireNamespace("magick", quietly = TRUE)) {
     cli::cli_warn(c(
-      "!" = "Für {.fn add_logo} werden {.pkg patchwork} und {.pkg magick} benötigt.",
-      "i" = "Abbildung wird ohne Logo zurückgegeben."
+      "!" = "F\u00fcr {.fn add_logo} werden {.pkg patchwork} und {.pkg magick} ben\u00f6tigt.",
+      "i" = "Abbildung wird ohne Logo zur\u00fcckgegeben."
     ))
     return(plot)
   }

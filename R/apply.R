@@ -114,7 +114,7 @@ set_corporate_design <- function(design) {
 #' @export
 reset_corporate_design <- function() {
   if (is.null(.cd_state$active)) {
-    cli::cli_inform("Kein Corporate Design aktiv – nichts zurückzusetzen.")
+    cli::cli_inform("Kein Corporate Design aktiv \u2013 nichts zur\u00fcckzusetzen.")
     return(invisible(NULL))
   }
 

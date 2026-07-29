@@ -93,12 +93,12 @@ validate_design <- function(design) {
   )
   bad <- all_cols[!is_hex(all_cols)]
   if (length(bad)) {
-    err <- c(err, "Ungültige Hex-Farbwerte: {.val {bad}}.")
+    err <- c(err, "Ung\u00fcltige Hex-Farbwerte: {.val {bad}}.")
   }
 
   if (length(err)) {
     names(err) <- rep("x", length(err))
-    cli::cli_abort(c("Ungültiges Corporate Design:", err))
+    cli::cli_abort(c("Ung\u00fcltiges Corporate Design:", err))
   }
   invisible(design)
 }
@@ -127,7 +127,7 @@ active_design <- function() {
   if (is.null(d)) {
     cli::cli_abort(c(
       "Kein Corporate Design aktiv.",
-      "i" = "Rufe zuerst {.fn set_corporate_design} auf oder übergib {.arg design}."
+      "i" = "Rufe zuerst {.fn set_corporate_design} auf oder \u00fcbergib {.arg design}."
     ))
   }
   d
@@ -139,6 +139,6 @@ print.corporate_design <- function(x, ...) {
   cli::cli_text("Version: {x$meta$version}")
   cli::cli_text("Qualitative Palette ({length(x$colors$qualitative)}): {.val {x$colors$qualitative}}")
   fam <- x$typography$family
-  cli::cli_text("Schrift: {if (nzchar(fam %||% '')) fam else 'Geräte-Standard'}")
+  cli::cli_text("Schrift: {if (nzchar(fam %||% '')) fam else 'Ger\u00e4te-Standard'}")
   invisible(x)
 }

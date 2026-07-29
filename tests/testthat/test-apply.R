@@ -9,7 +9,8 @@ test_that("set/reset restores theme, options and geom defaults", {
   old_theme <- ggplot2::theme_get()
   old_fill  <- ggplot2::GeomBar$default_aes$fill
 
-  set_corporate_design(design)
+  # Font fallback (e.g. when Frutiger is absent) is expected here.
+  suppressWarnings(set_corporate_design(design))
 
   # Discrete default scales are installed as a colour vector.
   expect_identical(getOption("ggplot2.discrete.fill"), design$colors$qualitative)

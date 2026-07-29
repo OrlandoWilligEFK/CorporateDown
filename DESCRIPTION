@@ -17,7 +17,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports:
     cli,
-    ggplot2 (>= 3.5.0),
+    ggplot2 (>= 3.4.0),
     grDevices,
     grid,
     ragg,
@@ -25,7 +25,10 @@ Imports:
     utils,
     yaml
 Suggests:
+    knitr,
     magick,
     patchwork,
+    rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: knitr
 Config/testthat/edition: 3

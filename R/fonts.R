@@ -35,10 +35,10 @@ register_design_fonts <- function(design) {
   resolved <- resolve_family(design)
 
   if (nzchar(fam) && !identical(tolower(resolved), tolower(fam))) {
-    shown <- if (nzchar(resolved)) resolved else "Geräte-Standard"
+    shown <- if (nzchar(resolved)) resolved else "Ger\u00e4te-Standard"
     cli::cli_warn(c(
       "!" = "Schrift {.val {fam}} nicht gefunden.",
-      "i" = "Nutze Ersatzschrift {.val {shown}}. Für die volle CD-Wirkung {fam} installieren."
+      "i" = "Nutze Ersatzschrift {.val {shown}}. F\u00fcr die volle CD-Wirkung {fam} installieren."
     ))
   }
   invisible(resolved)

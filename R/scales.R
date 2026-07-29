@@ -34,6 +34,22 @@ corporate_pal <- function(design, type = c("qualitative", "sequential", "divergi
   )
 }
 
+#' Build a discrete scale across ggplot2 versions
+#'
+#' ggplot2 < 3.5.0 requires the (now deprecated) `scale_name` argument, while
+#' >= 3.5.0 warns if it is supplied. This picks the right call so no deprecation
+#' warning is emitted on current ggplot2.
+#' @keywords internal
+#' @noRd
+cd_discrete_scale <- function(aesthetics, palette, ...) {
+  if (utils::packageVersion("ggplot2") >= "3.5.0") {
+    ggplot2::discrete_scale(aesthetics, palette = palette, ...)
+  } else {
+    ggplot2::discrete_scale(aesthetics, scale_name = "corporate",
+                            palette = palette, ...)
+  }
+}
+
 #' Corporate colour and fill scales
 #'
 #' Discrete or continuous ggplot2 scales driven by the design palettes. With
@@ -57,9 +73,10 @@ corporate_pal <- function(design, type = c("qualitative", "sequential", "divergi
 #'   system.file("designs/efk.yml", package = "CorporateDown")
 #' )
 #' library(ggplot2)
-#' ggplot(mpg, aes(class, fill = drv)) +
+#' p <- ggplot(mpg, aes(class, fill = drv)) +
 #'   geom_bar() +
 #'   scale_fill_corporate(design = design)
+#' # print(p) on a ragg device to render the corporate design
 #'
 #' @name scale_corporate
 NULL
@@ -70,7 +87,7 @@ scale_colour_corporate <- function(..., type = "qualitative", discrete = TRUE,
                                     design = NULL) {
   design <- design %||% active_design()
   if (discrete) {
-    ggplot2::discrete_scale("colour", palette = corporate_pal(design, type), ...)
+    cd_discrete_scale("colour", palette = corporate_pal(design, type), ...)
   } else {
     ggplot2::scale_colour_gradientn(colours = corporate_pal(design, type)(256), ...)
   }
@@ -86,7 +103,7 @@ scale_fill_corporate <- function(..., type = "qualitative", discrete = TRUE,
                                   design = NULL) {
   design <- design %||% active_design()
   if (discrete) {
-    ggplot2::discrete_scale("fill", palette = corporate_pal(design, type), ...)
+    cd_discrete_scale("fill", palette = corporate_pal(design, type), ...)
   } else {
     ggplot2::scale_fill_gradientn(colours = corporate_pal(design, type)(256), ...)
   }

@@ -1,0 +1,139 @@
+---
+title: "Einführung in CorporateDown"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Einführung in CorporateDown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.3,
+  dev = "ragg_png"
+)
+```
+
+`CorporateDown` verfolgt ein einfaches Prinzip: **Corporate Design einmal
+definieren, danach überall automatisch anwenden.** Nach einem einzigen Aufruf
+folgt ganz normaler ggplot2-Code dem hinterlegten Design – ohne dass in jeder
+Abbildung Theme oder Farbskalen wiederholt werden.
+
+```{r setup}
+library(CorporateDown)
+library(ggplot2)
+```
+
+## Ein Design aktivieren
+
+Das Paket liefert das Design der Eidgenössischen Finanzkontrolle (EFK) mit. Es
+lässt sich über seinen Namen aktivieren:
+
+```{r activate}
+set_corporate_design("efk")
+```
+
+Ist die Corporate-Schrift (hier *Frutiger*) nicht installiert, fällt das Paket
+mit einer Warnung auf eine freie Alternative zurück – Plotten schlägt also nie
+fehl.
+
+## Automatisch im Corporate Design
+
+Ab jetzt genügt gewöhnlicher ggplot2-Code. Theme, Farb- und Füllskalen sowie
+Geom-Defaults sind bereits gesetzt:
+
+```{r bars}
+ggplot(mpg, aes(class, fill = drv)) +
+  geom_bar() +
+  labs(
+    title = "Fahrzeuge nach Klasse",
+    subtitle = "Automatisch im EFK-Design",
+    x = NULL, y = "Anzahl"
+  )
+```
+
+```{r points}
+ggplot(mpg, aes(displ, hwy, colour = drv)) +
+  geom_point(size = 2) +
+  labs(title = "Verbrauch und Hubraum", x = "Hubraum", y = "Meilen/Gallone")
+```
+
+Eine kontinuierliche Ästhetik nutzt automatisch die sequenzielle Palette:
+
+```{r continuous}
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+  geom_raster() +
+  labs(title = "Kontinuierliche Füllung")
+```
+
+## Einzelne Bausteine verwenden
+
+Man muss nicht global umschalten. Theme und Skalen gibt es auch einzeln – etwa
+für eine einzelne Abbildung mit einem explizit übergebenen Design:
+
+```{r building-blocks, eval = FALSE}
+design <- corporate_design(
+  system.file("designs/efk.yml", package = "CorporateDown")
+)
+
+ggplot(mpg, aes(class, fill = drv)) +
+  geom_bar() +
+  scale_fill_corporate(design = design) +
+  theme_corporate(design)
+```
+
+## Ein eigenes Corporate Design definieren
+
+Ein Design ist eine YAML-Datei mit Design-Tokens. Am schnellsten kopiert man das
+mitgelieferte EFK-Design und passt die Werte an:
+
+```{r own-design, eval = FALSE}
+file.copy(
+  system.file("designs/efk.yml", package = "CorporateDown"),
+  "mein_design.yml"
+)
+# ... Farben, Schrift und Grössen in mein_design.yml anpassen ...
+
+design <- corporate_design("mein_design.yml")
+set_corporate_design(design)
+```
+
+Die wichtigsten Blöcke einer Design-Datei:
+
+* `colors`: `qualitative` (kategoriale Palette), `sequential`, `diverging`
+  und `semantic` (Hintergrund, Text, Gitter, Achsen …).
+* `typography`: `family`, `family_fallback`, Grössen und Gewichte.
+* `geometry`: Ränder, welche Gitterlinien sichtbar sind, Legendenposition.
+* `logo`: Pfad, Position und Breite für den Export.
+
+Fehlende Felder werden mit sinnvollen Vorgaben ergänzt – eine minimale Datei
+genügt zum Start.
+
+## Exportieren mit Titel, Quelle und Logo
+
+`finalise_plot()` setzt Titel/Quelle, platziert optional das Logo und speichert
+die Abbildung mit dem `ragg`-Device:
+
+```{r finalise, eval = FALSE}
+p <- ggplot(mpg, aes(class, fill = drv)) + geom_bar()
+
+finalise_plot(
+  p,
+  title = "Fahrzeuge nach Klasse",
+  source = "Quelle: EFK",
+  save_path = "abbildung.png",
+  width = 8, height = 5
+)
+```
+
+## Zurücksetzen
+
+`reset_corporate_design()` stellt Theme, Skalen-Optionen und Geom-Defaults
+wieder her, wie sie vor dem ersten `set_corporate_design()` waren:
+
+```{r reset}
+reset_corporate_design()
+```

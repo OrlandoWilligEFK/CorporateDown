@@ -26,9 +26,10 @@ grid_line <- function(on, colour, width) {
 #'   system.file("designs/efk.yml", package = "CorporateDown")
 #' )
 #' library(ggplot2)
-#' ggplot(mpg, aes(displ, hwy)) +
+#' p <- ggplot(mpg, aes(displ, hwy)) +
 #'   geom_point() +
 #'   theme_corporate(design)
+#' # print(p) on a ragg device to render the corporate design
 #'
 #' @export
 theme_corporate <- function(design, base_size = NULL) {

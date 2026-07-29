@@ -1,16 +1,16 @@
-# Corporate Design der Eidgenössischen Finanzkontrolle (EFK) / CD Bund
-# Referenz- und Testdesign für das Paket CorporateDown.
+# Corporate Design of the Swiss Federal Audit Office (EFK) / CD Bund.
+# Reference and test design for the CorporateDown package.
 meta:
   name: "EFK"
   version: "1.0.0"
 
 colors:
-  # Kategoriale Palette; erste Farbe ist das Bundesrot und wird als
-  # Default-Farbe/-Füllung der Geome verwendet.
+  # Categorical palette; the first colour is the federal red and is used as
+  # the default colour / fill for geoms.
   qualitative: ["#DC0018", "#4D4D4D", "#7A9CC6", "#E8A33D", "#5C8A5C", "#8C6BB1"]
-  # Endpunkte für kontinuierliche (sequenzielle) Skalen.
+  # Endpoints for continuous (sequential) scales.
   sequential:  ["#FDE5E7", "#DC0018"]
-  # Low/Mid/High für divergierende Skalen.
+  # Low / mid / high for diverging scales.
   diverging:
     low:  "#4D6FA9"
     mid:  "#F2F2F2"
